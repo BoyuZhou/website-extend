@@ -1,4 +1,4 @@
-#!/user/bin/env node
+#!/usr/bin/env node
 
 var program = require('commander');
 
@@ -6,29 +6,27 @@ program.version('0.0.1');
 
 program
   .command('help')
-  .description('ÏÔÊ¾Ê¹ÓÃ°ïÖú')
+  .description('æ˜¾ç¤ºä½¿ç”¨å¸®åŠ©')
   .action(function () {
     program.outputHelp();
   });
 
 program
   .command('create [dir]')
-  .description('´´½¨Ò»¸ö¿ÕµÄ²©¿Í')
+  .description('åˆ›å»ºä¸€ä¸ªç©ºçš„åšå®¢')
   .action(function (dir) {
     console.log('create %s', dir);
   });
 
 program
     .command('preview [dir]')
-    .description('ÊµÊ±Ô¤ÀÀ')
+    .description('å®æ—¶é¢„è§ˆ')
     .action(require('../lib/cmd_preview'));
 
 program
     .command('build [dir]')
-    .description('Éú³ÉÕûÕ¾¾²Ì¬html')
-    .option('-o, --output <dir>', 'Éú³ÉÕûÕ¾¾²Ì¬HTML´æ·ÅÄ¿Â¼')
-    .action(function (dir, options) {
-        console.log('create %s,output %s', dir, options.output);
-    });
+    .description('ç”Ÿæˆæ•´ç«™é™æ€html')
+    .option('-o, --output <dir>', 'ç”Ÿæˆæ•´ç«™é™æ€HTMLå­˜æ”¾ç›®å½•')
+    .action(require('../lib/cmd_build'));
 
 program.parse(process.argv);
